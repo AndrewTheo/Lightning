@@ -1,37 +1,63 @@
+int startX = 150;
+int startY = 0;
+int endX = 150;
+int endY = 0;
 
-int startX = 0;
-int startY = 150;
-int endX = 0;
-int endY = 150;
+float x = 25;
+
+int test;
+
+
 
 void setup()
 {
-  size(300,300);
-  strokeWeight(5);
-  background(0,0,0);
-  //frameRate();
+  size(500,300);
+  strokeWeight(2);
+  background(0,0,0);  
 }
 void draw()
-{
-	while(endX < 300)
+{	
+	//background(0,0,0);
+	cloud();
+	startX = (int)((x)+Math.random()*30-15);
+	while(endY < 300)
 	{
-		endX = startX + ((int)(Math.random()*10));
-		endY = startY + ((int)(Math.random()*18-9));
-		
-
-
-		stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+		endY = startY + ((int)(Math.random()*10));
+		endX = startX + ((int)(Math.random()*18-9));
+		//stroke((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
+		stroke(255);
 		line(startX,startY,endX,endY);
 		startX = endX;
 		startY = endY;
 	}
+	if (test == 0)
+	{
+		x = x -.5;
+	}
+	else if (test == 1)
+	{
+		x = x + .5;
+	}
 }
+
 void mousePressed()
 {
   background(0,0,0);
-  startX = 0;
-  startY = 150;
+  startX = (int)(Math.random()*200+50);
+  startY = 0;
   endX = 0;
   endY = 150;
 }
 
+void cloud()
+{
+	ellipse(x,5,100,20);
+	if (x == 450)
+	{	
+		test = 0;
+	}
+	if (x == 25)
+	{
+		test = 1;
+	}
+}
